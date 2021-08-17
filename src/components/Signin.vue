@@ -5,46 +5,49 @@
     <v-row justify="center" align="center" class="txt">
       <v-col cols="12" sm="12" md="12">
         <v-card class="signup">
-          <h1 class="display-1 text-center black--text font-weight-bold mb-2">
-            Sign in to your account
-          </h1>
-          <h2 class="text-left">Email</h2>
-          <v-text-field
-            v-model="email"
-            :rules="[emailrules.required, emailrules.email]"
-            color="#ec6382"
-            outlined
-            placeholder="jane.doe@gmail.com"
-          ></v-text-field>
+          <v-col cols="12">
+            <h1 class="display-1 black--text font-weight-bold mb-2">
+              Sign in to your account
+            </h1>
 
-          <v-layout>
-            <v-flex xs12 sm12 md6>
-              <h2 class="text-left">Password</h2>
-            </v-flex>
-            <v-flex xs12 sm12 md6>
-              <h2 class="text-right">Forgot Password?</h2>
-            </v-flex>
-          </v-layout>
-          <v-text-field
-            v-model="password"
-            :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-            :rules="[rules.required, rules.min]"
-            :type="show1 ? 'text' : 'password'"
-            name="input-10-1"
-            hint="At least 8 characters"
-            counter
-            @click:append="show1 = !show1"
-            color="#ec6382"
-            outlined
-            placeholder="Password"
-          ></v-text-field>
-          <v-icon>mdi-checkbox-marked</v-icon>
-          <p>Stay signed in for a week</p>
+            <h2 class="text-left">Email</h2>
+            <v-text-field
+              dense
+              v-model="email"
+              :rules="[emailrules.required, emailrules.email]"
+              color="#ec6382"
+              outlined
+              placeholder="jane.doe@gmail.com"
+            ></v-text-field>
 
-          <v-btn @click="checkForm" color="#635CFF" class="btn">
-            Continue</v-btn
-          >
-          <p>Use single sign-on(SSO) instead</p>
+            <h2 class="left-text">Password</h2>
+            <h2 class="right-text">Forgot Password?</h2>
+
+            <v-text-field
+              dense
+              v-model="password"
+              :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+              :rules="[rules.required, rules.min]"
+              :type="show1 ? 'text' : 'password'"
+              name="input-10-1"
+              hint="At least 8 characters"
+              counter
+              @click:append="show1 = !show1"
+              color="#ec6382"
+              outlined
+              placeholder="Password"
+            ></v-text-field>
+            <v-icon color="#635CFF">mdi-checkbox-marked</v-icon><span >Stay signed in for a week</span>
+
+            <v-btn @click="checkForm" color="#635CFF"  block class="btn">
+              Continue</v-btn
+            >
+            <div>
+            <p class="text-center">Use single sign-on(SSO) instead</p>
+            </div>
+            
+          </v-col>
+        
         </v-card>
       </v-col>
     </v-row>
@@ -114,16 +117,35 @@ h1 {
   color: #3c4257;
 }
 h2 {
+  position: static;
   height: 17px;
+  left: 0px;
+  top: 0px;
+
   font-family: SF Pro Text;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
+  /* identical to box height */
+
   display: flex;
   align-items: center;
+
+  /* Grey 800 */
+
   color: #3c4257;
+
+  /* Inside Auto Layout */
 }
+
+.left-text {
+  display: inline-block;
+}
+.right-text {
+  float: right;
+}
+
 a {
   text-decoration: none;
   color: #ec6382;
@@ -141,11 +163,7 @@ a:hover {
   align-items: center;
   padding: 13.5px 10px;
 
-  position: static;
-  width: 406px;
-  height: 46px;
-  left: 0px;
-  top: 264px;
+  
 
   /* Purple */
 
@@ -178,16 +196,7 @@ a:hover {
     0px 15px 35px rgba(60, 66, 87, 0.08);
   border-radius: 4px;
 }
-.v-text-field {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 13.5px 12px 13.5px 16px;
-
-  position: static;
-  width: 406px;
-  height: 46px;
-  left: 0px;
-  top: 29px;
+.v-text-field{
+      width: 406px !important;
 }
 </style>
