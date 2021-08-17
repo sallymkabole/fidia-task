@@ -1,7 +1,29 @@
 <template>
   <div class="background">
     <div class="top"></div>
-    <div class="bottom"></div>
+    <div class="bottom"><p class="stripe-headline">Stripe</p>
+    <p class="stripe-signup">Don't have an Account?<span class="pur">Signup</span></p>
+    <p class="stripe-footer">&copy;<a
+            href="https://stripe.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Stripe
+          </a>. <a
+            href="https://stripe.com/contact"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Contact
+          </a>.<a
+            href="https://stripe.com/privacy"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Privacy&Terms
+          </a></p>
+    </div>
+
     <v-row justify="center" align="center" class="txt">
       <v-col cols="12" sm="12" md="12">
         <v-card class="signup">
@@ -15,13 +37,13 @@
               dense
               v-model="email"
               :rules="[emailrules.required, emailrules.email]"
-              color="#ec6382"
+              color="#B0D8F0"
               outlined
               placeholder="jane.doe@gmail.com"
             ></v-text-field>
 
             <h2 class="left-text">Password</h2>
-            <h2 class="right-text">Forgot Password?</h2>
+            <h2 class="right-text pur">Forgot Password?</h2>
 
             <v-text-field
               dense
@@ -33,21 +55,20 @@
               hint="At least 8 characters"
               counter
               @click:append="show1 = !show1"
-              color="#ec6382"
+              color="#B0D8F0"
               outlined
               placeholder="Password"
             ></v-text-field>
-            <v-icon color="#635CFF">mdi-checkbox-marked</v-icon><span >Stay signed in for a week</span>
+            <v-icon color="#635CFF">mdi-checkbox-marked</v-icon
+            ><span>Stay signed in for a week</span>
 
-            <v-btn @click="checkForm" color="#635CFF"  block class="btn">
+            <v-btn @click="checkForm" color="#635CFF" block class="btn">
               Continue</v-btn
             >
             <div>
-            <p class="text-center">Use single sign-on(SSO) instead</p>
+              <p class="text-center pur">Use single sign-on(SSO) instead</p>
             </div>
-            
           </v-col>
-        
         </v-card>
       </v-col>
     </v-row>
@@ -138,7 +159,30 @@ h2 {
 
   /* Inside Auto Layout */
 }
-
+.stripe-headline {
+  position: absolute;
+  top: 3%;
+  left: 38%;
+  color: #000000;
+  font-weight: 600;
+  font-size: 14px;
+}
+.stripe-signup{
+  position: absolute;
+  bottom: 13%;
+  left: 38%;
+  color: #000000;
+  font-weight: 400;
+  font-size: 14px;
+}
+.stripe-footer{
+  position: absolute;
+  bottom: 9%;
+  left: 38%;
+  color: #000000;
+  font-weight: 400;
+  font-size: 14px;
+}
 .left-text {
   display: inline-block;
 }
@@ -148,11 +192,14 @@ h2 {
 
 a {
   text-decoration: none;
-  color: #ec6382;
+  color: #697386;
   transition: 0.5s ease;
 }
 a:hover {
   color: #dfd3d3;
+}
+.pur{
+color: #635cff;
 }
 
 .btn {
@@ -162,8 +209,6 @@ a:hover {
   justify-content: center;
   align-items: center;
   padding: 13.5px 10px;
-
-  
 
   /* Purple */
 
@@ -196,7 +241,10 @@ a:hover {
     0px 15px 35px rgba(60, 66, 87, 0.08);
   border-radius: 4px;
 }
-.v-text-field{
-      width: 406px !important;
+.v-text-field {
+  width: 406px !important;
+}
+.v-text-field:hover{
+color: #B0D8F0 !important;
 }
 </style>
