@@ -3,21 +3,11 @@
     <v-navigation-drawer
       v-model="sidebarMenu"
       app
+      color="#F7FAFC"
       floating
       :permanent="sidebarMenu"
       :mini-variant.sync="mini"
     >
-      <v-list dense color="primary">
-        <v-list-item>
-          <v-list-item-action>
-               <v-btn icon small>
-          <v-icon @click.stop="sidebarMenu = !sidebarMenu">mdi-store</v-icon>
-        </v-btn>
-            
-          </v-list-item-action>
-          <v-list-item-content> Store Name </v-list-item-content>
-        </v-list-item>
-      </v-list>
       <v-list-item class="px-2" @click="toggleMini = !toggleMini">
         <v-list-item-avatar>
           <v-icon>mdi-account-outline</v-icon>
@@ -31,21 +21,55 @@
       </v-list-item>
 
       <v-list>
-        <v-list-item
-          v-for="item in items"
-          :key="item.title"
-          link
-          :to="item.href"
-        >
+        <v-list-item>
           <v-list-item-icon>
-            <v-icon color="primary">{{ item.icon }}</v-icon>
+            <v-icon>mdi-home</v-icon>
           </v-list-item-icon>
+
+          <v-list-item-title>Home</v-list-item-title>
+        </v-list-item>
+
+      <v-list>
+      <v-list-group
+        v-for="item in items"
+        :key="item.title"
+        v-model="item.active"
+        :prepend-icon="item.action"
+        no-action
+      >
+        <template v-slot:activator>
           <v-list-item-content>
-            <v-list-item-title class="primary--text">{{
-              item.title
-            }}</v-list-item-title>
+            <v-list-item-title v-text="item.title"></v-list-item-title>
+          </v-list-item-content>
+        </template>
+
+        <v-list-item
+          v-for="child in item.items"
+          :key="child.title"
+        >
+          <v-list-item-content>
+            <v-list-item-title v-text="child.title"></v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+      </v-list-group>
+    </v-list>
+        <v-list>
+          <v-list-item
+            v-for="i in plist"
+            :key="i.title"
+            link
+            :to="i.href"
+          >
+            <v-list-item-icon>
+              <v-icon color="primary">{{ i.icon }}</v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title class="primary--text">{{
+                i.title
+              }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
       </v-list>
     </v-navigation-drawer>
     <v-content>
@@ -67,20 +91,34 @@ export default {
       sidebarMenu: true,
       toggleMini: false,
       items: [
-        { title: "Home", href: "/", icon: "mdi-home-outline" },
         {
-          title: "Detections",
-          href: "/detections",
-          icon: "mdi-shield-account",
+          action: 'mdi-cash-multiple',
+          items: [{ title: "Reviews" }, { title: "Disputes" },{ title: "Top-ups" }, { title: "Collected fees" },{ title: "Transfers" }, { title: "Payouts" }, { title: "All transactions" }, ],
+          title: 'Payments',
         },
-        { title: "Components", href: "/comp", icon: "mdi-palette-swatch" },
+        
+      ],
+      plist: [
+        { title: "Balances", href: "/comp", icon: "mdi-swap-vertical" },
         {
           title: "Customers",
           href: "/customers",
           icon: "mdi-account-search-outline",
         },
-        { title: "Orders", href: "/orders", icon: "mdi-bus-clock" },
-        { title: "Settings", href: "/settings", icon: "mdi-settings-outline" },
+        {
+          title: "Connected Accounts",
+          href: "/orders",
+          icon: "mdi-account-supervisor-circle",
+        },
+        { title: "Product", href: "/product", icon: "mdi-archive" },
+        { title: "Reports", href: "/reports", icon: "mdi-file-chart" },
+        { title: "Developers", href: "/developers", icon: "mdi-cash-multiple" },
+        {
+          title: "View test data",
+          href: "/view-test-data",
+          icon: "mdi-toggle-switch-off-outline",
+        },
+        { title: "Settings", href: "/settings", icon: "mdi-cog-outline" },
       ],
       errors: [],
       email: "",
