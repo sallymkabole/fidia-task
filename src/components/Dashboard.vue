@@ -37,6 +37,7 @@
               v-model="item.active"
               :prepend-icon="item.action"
               no-action
+              color="#635cff"
             >
               <template v-slot:activator>
                 <v-list-item-content>
@@ -92,7 +93,7 @@
             <v-col md="12" xs="12" sm="12">
               <v-card color="grey lighten-4" flat>
                 <v-toolbar color="#fff" flat>
-                  <h1 class="h2 pa-2">Payments</h1>
+                  <h1  class="h2 pa-2">Payments</h1>
                   <v-spacer></v-spacer>
                   <v-btn class="top-btn" color="#fff"
                     ><v-icon>mdi-filter</v-icon>Filter</v-btn
@@ -464,6 +465,10 @@ h2 {
   color: #3c4257;
 
   /* Inside Auto Layout */
+}
+.purple-text{
+  color: #635cff;
+
 }
 .stripe-headline {
   position: absolute;
