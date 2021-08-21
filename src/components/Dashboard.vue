@@ -69,20 +69,32 @@
       <v-content>
         <v-container class="px-4 py-2 fill-height" fluid>
           <v-layout row>
-            <v-app-bar app class="" color="#fff">
-              <v-icon class="pl-4">mdi-magnify</v-icon> <span class="h2">Search...</span>
-              <v-spacer></v-spacer>
-              <v-icon color="#A3ACB9">mdi-bell</v-icon>
-              <v-icon color="#A3ACB9">mdi-help-circle</v-icon>
-              <v-icon color="#A3ACB9">mdi-account</v-icon>
+            <v-app-bar app flat color="#fff">
+              <v-text-field
+                prepend-inner-icon="mdi-magnify"
+                flat
+                full-width
+                hide-details
+                label="Search..."
+                solo
+                class="hr" 
+              >
+                <template slot="append">
+                  <v-icon color="#A3ACB9">mdi-bell</v-icon>
+                  <v-icon color="#A3ACB9">mdi-help-circle</v-icon>
+                  <v-icon color="#A3ACB9">mdi-account</v-icon>
+                </template>
+                
+                </v-text-field
+              >
             </v-app-bar>
 
             <v-col md="12" xs="12" sm="12">
-              <v-card color="grey lighten-4" flat >
+              <v-card color="grey lighten-4" flat>
                 <v-toolbar color="#fff" flat>
                   <h1 class="h2 pa-2">Payments</h1>
                   <v-spacer></v-spacer>
-                  <v-btn class="top-btn " color="#fff"
+                  <v-btn class="top-btn" color="#fff"
                     ><v-icon>mdi-filter</v-icon>Filter</v-btn
                   >
                   <v-btn class="top-btn ml-2" color="#fff"
@@ -93,7 +105,7 @@
                   >
 
                   <template v-slot:extension>
-                    <v-tabs color="#5469D4" height="100%" v-model="tabs" left>
+                    <v-tabs color="#5469D4" v-model="tabs" left>
                       <v-tab class="grey--text text-capitalize"> All </v-tab>
                       <v-tab-item>
                         <v-card flat>
@@ -111,7 +123,7 @@
                           </v-card-text>
                         </v-card>
                       </v-tab-item>
-                      
+
                       <v-tab class="grey--text text-capitalize">
                         Succeeded
                       </v-tab>
@@ -123,18 +135,43 @@
                             :single-select="singleSelect"
                             :items="users"
                             item-key="name"
+                            :items-per-page="10"
                             show-select
                             class="elevation-1"
-                            items-per-page="12"
+                            :hide-default-footer="true"
                           >
-                          <template v-slot:top>
-      <v-switch
-        v-model="singleSelect"
-        label="Single select"
-        class="pa-3"
-      ></v-switch>
-    </template>
                           </v-data-table>
+                          <div class="d-flex d-inline pa-4">
+                            <v-btn color="" text> 10 Results </v-btn>
+                            <v-spacer />
+                            <div class="table-footer-prepend d-flex">
+                              <v-tooltip top>
+                                <template v-slot:activator="{ on }">
+                                  <v-btn
+                                    color="white"
+                                    disabled
+                                    class="mr-3 top-btn"
+                                    v-on="on"
+                                  >
+                                    Previous
+                                  </v-btn>
+                                </template>
+                                <span>Back</span>
+                              </v-tooltip>
+                              <v-tooltip top>
+                                <template v-slot:activator="{ on }">
+                                  <v-btn
+                                    color="#fff"
+                                    class="mr-3 top-btn"
+                                    v-on="on"
+                                  >
+                                    Next</v-btn
+                                  >
+                                </template>
+                                <span>Next</span>
+                              </v-tooltip>
+                            </div>
+                          </div>
                         </v-card>
                       </v-tab-item>
                       <v-tab class="grey--text text-capitalize">
@@ -182,14 +219,6 @@
             </v-col>
           </v-layout>
         </v-container>
-        <v-card-actions>
-          <v-btn color="" text> 12 Results </v-btn>
-
-          <v-spacer></v-spacer>
-
-          <v-btn disabled> Prev </v-btn>
-          <v-btn> Next </v-btn>
-        </v-card-actions>
       </v-content>
     </v-app>
   </div>
@@ -216,14 +245,14 @@ export default {
         { text: "DATE", value: "date" },
       ],
       users: [
-         {
+        {
           name: "US$352.22 ",
-          icon:"mdi-account",
+          icon: "mdi-account",
           description: "fe3d8216-58f9-4dc1-aaef-2f19463b5258",
           customer: "hefovo87@ereyemind",
           date: "7 Jul, 14:04",
         },
-        
+
         {
           name: "US$39.99",
           description: "0d7b6ac7-dbda-4157-bae9-e64749e538f5",
@@ -273,7 +302,7 @@ export default {
           customer: "hefovo87@ereyemind",
           date: "7 Jul, 14:04",
         },
-        
+
         {
           name: "US$39.99",
           description: "0d7b6ac7-dbda-4157-bae9-e64749e538f5",
@@ -531,8 +560,8 @@ a:hover {
 .v-text-field:hover {
   color: #b0d8f0 !important;
 }
-.vl {
-  border: 1px solid red;
+.hr {
+  border-bottom: 1px solid #E3E8EE;
   width: 100%;
 }
 </style>
