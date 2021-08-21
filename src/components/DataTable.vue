@@ -1,16 +1,14 @@
 <template>
   <div>
     <v-data-table
-      v-model="selected"
       :headers="headers"
-      :single-select="singleSelect"
-      :items="users"
-      item-key="name"
+      :items="items"
       :items-per-page="10"
-      show-select
       class="elevation-1"
-      :hide-default-footer="true"
     >
+      <template v-slot:item.action="{ item }">
+        <v-btn small color="success">Sucess <v-icon>mdi-check</v-icon></v-btn>
+      </template>
     </v-data-table>
     <div class="d-flex d-inline pa-4">
       <v-btn color="" text> 10 Results </v-btn>
@@ -39,7 +37,7 @@ export default {
   name: "DataTable",
   data() {
     return {
-       tabs: null,
+      tabs: null,
       sidebarMenu: true,
       toggleMini: false,
       singleSelect: false,
@@ -51,14 +49,14 @@ export default {
           sortable: false,
           value: "name",
         },
+        { text: "", value: "action", sortable: false },
         { text: "DESCRIPTION", value: "description" },
         { text: "CUSTOMER", value: "customer" },
         { text: "DATE", value: "date" },
       ],
-      users: [
+      items: [
         {
           name: "US$352.22 ",
-          icon: "mdi-account",
           description: "fe3d8216-58f9-4dc1-aaef-2f19463b5258",
           customer: "hefovo87@ereyemind",
           date: "7 Jul, 14:04",
@@ -158,9 +156,8 @@ export default {
           date: "7 Jul, 14:04",
         },
       ],
-
-    }
-  }
+    };
+  },
 };
 </script>
 <style scoped>
@@ -205,9 +202,8 @@ h2 {
 
   /* Inside Auto Layout */
 }
-.purple-text{
+.purple-text {
   color: #635cff;
-
 }
 
 .left-text {
@@ -257,5 +253,4 @@ a:hover {
   margin: 28px 0px;
   text-transform: capitalize;
 }
-
 </style>

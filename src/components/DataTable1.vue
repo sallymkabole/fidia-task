@@ -1,36 +1,27 @@
 <template>
-  <div>
+  <div id="app">
     <v-data-table
-      v-model="selected"
       :headers="headers"
-      :single-select="singleSelect"
-      :items="users"
-      item-key="name"
+      :items="items"
       :items-per-page="10"
-      class="elevation-1"
-      :hide-default-footer="true"
+      class="elevation-1 "
     >
+      <template v-slot:item.action="{ item }">
+        <v-btn class="left"  small color="success">Sucess <v-icon>mdi-check</v-icon></v-btn>
+      </template>
+      
     </v-data-table>
-    <div class="d-flex d-inline pa-4">
-      <v-btn color="" text> 10 Results </v-btn>
-      <v-spacer />
-      <div class="table-footer-prepend d-flex">
-        <v-tooltip top>
-          <template v-slot:activator="{ on }">
-            <v-btn color="white" disabled class="mr-3 top-btn" v-on="on">
-              Previous
-            </v-btn>
-          </template>
-          <span>Back</span>
-        </v-tooltip>
-        <v-tooltip top>
-          <template v-slot:activator="{ on }">
-            <v-btn color="#fff" class="mr-3 top-btn" v-on="on"> Next</v-btn>
-          </template>
-          <span>Next</span>
-        </v-tooltip>
+
+    <v-row no-gutters>
+      <div class="error w-100 text-center" v-if="error">
+        <p class="mt-3">{{ error }}</p>
+        <p>
+          <button class="btn btn-warning mb-3" @click.prevent="fetchData()">
+            Try Again
+          </button>
+        </p>
       </div>
-    </div>
+    </v-row>
   </div>
 </template>
 <script>
@@ -38,7 +29,7 @@ export default {
   name: "DataTable1",
   data() {
     return {
-       tabs: null,
+      tabs: null,
       sidebarMenu: true,
       toggleMini: false,
       singleSelect: false,
@@ -50,14 +41,15 @@ export default {
           sortable: false,
           value: "name",
         },
+        { text: "", value: "action", sortable: false },
         { text: "DESCRIPTION", value: "description" },
         { text: "CUSTOMER", value: "customer" },
         { text: "DATE", value: "date" },
       ],
-      users: [
+      items: [
         {
           name: "US$352.22 ",
-          icon: "mdi-account",
+          action: "sucess",
           description: "fe3d8216-58f9-4dc1-aaef-2f19463b5258",
           customer: "hefovo87@ereyemind",
           date: "7 Jul, 14:04",
@@ -157,9 +149,8 @@ export default {
           date: "7 Jul, 14:04",
         },
       ],
-
-    }
-  }
+    };
+  },
 };
 </script>
 <style scoped>
@@ -204,9 +195,8 @@ h2 {
 
   /* Inside Auto Layout */
 }
-.purple-text{
+.purple-text {
   color: #635cff;
-
 }
 
 .left-text {
@@ -256,5 +246,4 @@ a:hover {
   margin: 28px 0px;
   text-transform: capitalize;
 }
-
 </style>
