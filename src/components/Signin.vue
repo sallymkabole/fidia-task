@@ -16,15 +16,18 @@
               </div>
             </div>
             <div class="bottom">
-              <p class="stripe-headline">Stripe</p>
+              
+              <div class="d-flex d-inline-flex">
+                <p  class="stripe-headline ">Stripe</p>
               <p class="stripe-signup">
                 Don't have an Account?<span class="pur">Signup</span>
               </p>
-              <p class="stripe-footer">
+              <p class="stripe-footer grey--text">
                 &copy;<a
                   href="https://stripe.com/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  class="grey-text"
                 >
                   Stripe </a
                 >.
@@ -32,16 +35,19 @@
                   href="https://stripe.com/contact"
                   target="_blank"
                   rel="noopener noreferrer"
+                  class="grey-text"
                 >
                   Contact </a
                 >.<a
                   href="https://stripe.com/privacy"
                   target="_blank"
                   rel="noopener noreferrer"
+                  class="grey-text"
                 >
                   Privacy&Terms
                 </a>
               </p>
+              </div>
             </div>
 
             <v-row justify="center" align="center" class="txt">
@@ -57,7 +63,7 @@
                       dense
                       v-model="email"
                       :rules="[emailrules.required, emailrules.email]"
-                      color="#B0D8F0"
+                      color="#B0D8F0" 
                       outlined
                       placeholder="jane.doe@gmail.com"
                     ></v-text-field>
@@ -289,9 +295,12 @@ html {
   overflow-y: scroll;
 }
 .background {
-  position: absolute;
-  width: 100%;
-  margin: 0 auto;
+ position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    z-index: 13;
 }
 
 .top {
@@ -344,15 +353,15 @@ h2 {
 }
 .stripe-headline {
   position: absolute;
-  top: 3%;
-  left: 38%;
+  top: 7%;
+  left: 37.4%;
   color: #000000;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 22px;
 }
 .stripe-signup {
   position: absolute;
-  bottom: 13%;
+  top: 80%;
   left: 38%;
   color: #000000;
   font-weight: 400;
@@ -360,9 +369,9 @@ h2 {
 }
 .stripe-footer {
   position: absolute;
-  bottom: 9%;
+  bottom: 11%;
   left: 38%;
-  color: #000000;
+  color:gray !important;
   font-weight: 400;
   font-size: 14px;
 }
@@ -413,10 +422,11 @@ a:hover {
   padding: 48px 68px 72px;
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 44%;
   transform: translate(-50%, -50%);
-  width: 542px;
-  height: 537px;
+  width: 537px;
+  height: 542px;
+  
 
   background: #ffffff;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.12),
@@ -432,7 +442,7 @@ a:hover {
 .box {
   position: absolute;
   left: 73.19%;
-  top: 32.93%;
+  top: 23.93%;
   bottom: 59.98%;
   height: 40px;
   width: 950px;
@@ -457,7 +467,7 @@ a:hover {
   right: 78.19%;
   left: -0.03%;
   bottom: 32.33%;
-  top: 90.78%;
+  top: 65.78%;
   height: 40px;
   width: 560px;
   background: rgba(12, 0, 250, 0.5);
@@ -480,7 +490,7 @@ a:hover {
   position: absolute;
   left: 1.46%;
   right: 87.5%;
-  top: 89.82%;
+  top: 65.82%;
   bottom: 32.61%;
   height: 50px;
   opacity: 0.5;
@@ -499,5 +509,8 @@ a:hover {
   -ms-transform: skewY(5deg);
   -o-transform: skewY(5deg);
   transform: skewY(5deg);
+}
+.grey-text{
+  color: #697386;
 }
 </style>
