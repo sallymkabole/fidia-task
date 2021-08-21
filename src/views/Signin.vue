@@ -88,7 +88,7 @@
                     <v-icon color="#635CFF">mdi-checkbox-marked</v-icon
                     ><span>Stay signed in for a week</span>
 
-                    <v-btn @click="checkForm" color="#635CFF" block class="btn">
+                    <v-btn to="/dashboard" color="#635CFF" block class="btn">
                       Continue</v-btn
                     >
                     <div>
