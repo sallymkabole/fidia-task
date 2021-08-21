@@ -2,10 +2,21 @@
   <div>
     <v-data-table
       :headers="headers"
+      show-select
+      :single-select="singleSelect"
+       item-key="name"
       :items="items"
       :items-per-page="10"
       class="elevation-1"
+      hide-default-footer
     >
+     <template v-slot:top>
+      <v-switch
+        v-model="singleSelect"
+        label="Single select"
+        class="pa-3"
+      ></v-switch>
+    </template>
       <template v-slot:item.action="{ item }">
         <v-btn small color="success">Sucess <v-icon>mdi-check</v-icon></v-btn>
       </template>

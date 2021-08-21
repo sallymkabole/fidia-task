@@ -1,17 +1,19 @@
 <template>
   <v-card color="grey lighten-4" flat>
                 <v-toolbar color="#fff" flat>
-                  <h1  class="h2 pa-2">Payments</h1>
+                  
+                  <h1  class="h2 left-text pa-2">Payments</h1>
                   <v-spacer></v-spacer>
-                  <v-btn class="top-btn" color="#fff"
+                  <v-btn class="top-btn mt-4" color="#fff"
                     ><v-icon>mdi-filter</v-icon>Filter</v-btn
                   >
-                  <v-btn class="top-btn ml-2" color="#fff"
+                  <v-btn class="top-btn ml-2 mt-4" color="#fff"
                     ><v-icon>mdi-arrow-top-right</v-icon>Export</v-btn
                   >
-                  <v-btn class="top-btn1 ml-2" color="#5469D4"
+                  <v-btn class="top-btn1 ml-2 mt-4" color="#5469D4"
                     ><v-icon>mdi-plus</v-icon>Create Payment</v-btn
                   >
+                  
 
                   <template v-slot:extension>
                     <v-tabs color="#5469D4" v-model="tabs" left>

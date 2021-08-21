@@ -9,11 +9,11 @@
         :permanent="sidebarMenu"
         :mini-variant.sync="mini"
       >
-        <v-list-item class="px-2" @click="toggleMini = !toggleMini">
+        <v-list-item class="px-2 " @click="toggleMini = !toggleMini">
           <v-list-item-avatar>
-            <v-icon>mdi-account-outline</v-icon>
+            <v-icon class="grey-text">mdi-account-outline</v-icon>
           </v-list-item-avatar>
-          <v-list-item-content class="text-truncate">
+          <v-list-item-content class="grey-text font-weight-bold">
             Store Name
           </v-list-item-content>
           <v-btn icon small>
@@ -27,7 +27,7 @@
               <v-icon>mdi-home</v-icon>
             </v-list-item-icon>
 
-            <v-list-item-title>Home</v-list-item-title>
+            <v-list-item-title class="">Home</v-list-item-title>
           </v-list-item>
 
           <v-list>
@@ -52,13 +52,13 @@
               </v-list-item>
             </v-list-group>
           </v-list>
-          <v-list>
+          <v-list >
             <v-list-item v-for="i in plist" :key="i.title" link :to="i.href">
               <v-list-item-icon>
-                <v-icon color="primary">{{ i.icon }}</v-icon>
+                <v-icon class="grey-text">{{ i.icon }}</v-icon>
               </v-list-item-icon>
               <v-list-item-content>
-                <v-list-item-title class="primary--text">{{
+                <v-list-item-title class="grey-text">{{
                   i.title
                 }}</v-list-item-title>
               </v-list-item-content>
@@ -251,5 +251,8 @@ a:hover {
 .hr {
   border-bottom: 1px solid #e3e8ee;
   width: 100%;
+}
+.grey-text{
+    color: #1A1F36 !important;
 }
 </style>
