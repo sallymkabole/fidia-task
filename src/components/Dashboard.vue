@@ -1,86 +1,197 @@
 <template>
   <div>
-    <v-navigation-drawer
-      v-model="sidebarMenu"
-      app
-      color="#F7FAFC"
-      floating
-      :permanent="sidebarMenu"
-      :mini-variant.sync="mini"
-    >
-      <v-list-item class="px-2" @click="toggleMini = !toggleMini">
-        <v-list-item-avatar>
-          <v-icon>mdi-account-outline</v-icon>
-        </v-list-item-avatar>
-        <v-list-item-content class="text-truncate">
-          Store Name
-        </v-list-item-content>
-        <v-btn icon small>
-          <v-icon>mdi-chevron-down</v-icon>
-        </v-btn>
-      </v-list-item>
-
-      <v-list>
-        <v-list-item>
-          <v-list-item-icon>
-            <v-icon>mdi-home</v-icon>
-          </v-list-item-icon>
-
-          <v-list-item-title>Home</v-list-item-title>
-        </v-list-item>
-
-      <v-list>
-      <v-list-group
-        v-for="item in items"
-        :key="item.title"
-        v-model="item.active"
-        :prepend-icon="item.action"
-        no-action
+    <v-app>
+      <v-navigation-drawer
+        v-model="sidebarMenu"
+        app
+        color="#F7FAFC"
+        floating
+        :permanent="sidebarMenu"
+        :mini-variant.sync="mini"
       >
-        <template v-slot:activator>
-          <v-list-item-content>
-            <v-list-item-title v-text="item.title"></v-list-item-title>
+        <v-list-item class="px-2" @click="toggleMini = !toggleMini">
+          <v-list-item-avatar>
+            <v-icon>mdi-account-outline</v-icon>
+          </v-list-item-avatar>
+          <v-list-item-content class="text-truncate">
+            Store Name
           </v-list-item-content>
-        </template>
-
-        <v-list-item
-          v-for="child in item.items"
-          :key="child.title"
-        >
-          <v-list-item-content>
-            <v-list-item-title v-text="child.title"></v-list-item-title>
-          </v-list-item-content>
+          <v-btn icon small>
+            <v-icon>mdi-chevron-down</v-icon>
+          </v-btn>
         </v-list-item>
-      </v-list-group>
-    </v-list>
+
         <v-list>
-          <v-list-item
-            v-for="i in plist"
-            :key="i.title"
-            link
-            :to="i.href"
-          >
+          <v-list-item>
             <v-list-item-icon>
-              <v-icon color="primary">{{ i.icon }}</v-icon>
+              <v-icon>mdi-home</v-icon>
             </v-list-item-icon>
-            <v-list-item-content>
-              <v-list-item-title class="primary--text">{{
-                i.title
-              }}</v-list-item-title>
-            </v-list-item-content>
+
+            <v-list-item-title>Home</v-list-item-title>
           </v-list-item>
+
+          <v-list>
+            <v-list-group
+              v-for="item in items"
+              :key="item.title"
+              v-model="item.active"
+              :prepend-icon="item.action"
+              no-action
+            >
+              <template v-slot:activator>
+                <v-list-item-content>
+                  <v-list-item-title v-text="item.title"></v-list-item-title>
+                </v-list-item-content>
+              </template>
+
+              <v-list-item v-for="child in item.items" :key="child.title">
+                <v-list-item-content>
+                  <v-list-item-title v-text="child.title"></v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list-group>
+          </v-list>
+          <v-list>
+            <v-list-item v-for="i in plist" :key="i.title" link :to="i.href">
+              <v-list-item-icon>
+                <v-icon color="primary">{{ i.icon }}</v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>
+                <v-list-item-title class="primary--text">{{
+                  i.title
+                }}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
         </v-list>
-      </v-list>
-    </v-navigation-drawer>
-    <v-content>
-      <v-container class="px-4 py-0 fill-height" fluid>
-        <v-row class="fill-height">
-          <v-col>
-            <v-icon>mdi-magnify</v-icon> <span class="h2">Search</span>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-content>
+      </v-navigation-drawer>
+
+      <v-content>
+        <v-container class="px-4 py-2 fill-height" fluid>
+          <v-layout row>
+            <v-app-bar app class="" color="#fff">
+              <v-icon class="pl-4">mdi-magnify</v-icon> <span class="h2">Search...</span>
+              <v-spacer></v-spacer>
+              <v-icon color="#A3ACB9">mdi-bell</v-icon>
+              <v-icon color="#A3ACB9">mdi-help-circle</v-icon>
+              <v-icon color="#A3ACB9">mdi-account</v-icon>
+            </v-app-bar>
+
+            <v-col md="12" xs="12" sm="12">
+              <v-card color="grey lighten-4" flat >
+                <v-toolbar color="#fff" flat>
+                  <h1 class="h2 pa-2">Payments</h1>
+                  <v-spacer></v-spacer>
+                  <v-btn class="top-btn " color="#fff"
+                    ><v-icon>mdi-filter</v-icon>Filter</v-btn
+                  >
+                  <v-btn class="top-btn ml-2" color="#fff"
+                    ><v-icon>mdi-arrow-top-right</v-icon>Export</v-btn
+                  >
+                  <v-btn class="top-btn1 ml-2" color="#5469D4"
+                    ><v-icon>mdi-plus</v-icon>Create Payment</v-btn
+                  >
+
+                  <template v-slot:extension>
+                    <v-tabs color="#5469D4" height="100%" v-model="tabs" left>
+                      <v-tab class="grey--text text-capitalize"> All </v-tab>
+                      <v-tab-item>
+                        <v-card flat>
+                          <v-card-title class="text-h5">
+                            An even better title
+                          </v-card-title>
+                          <v-card-text>
+                            <p>
+                              Maecenas ullamcorper, dui et placerat feugiat,
+                              eros pede varius nisi, condimentum viverra felis
+                              nunc et lorem. Sed hendrerit. Maecenas malesuada.
+                              Vestibulum ullamcorper mauris at ligula. Proin
+                              faucibus arcu quis ante.
+                            </p>
+                          </v-card-text>
+                        </v-card>
+                      </v-tab-item>
+                      
+                      <v-tab class="grey--text text-capitalize">
+                        Succeeded
+                      </v-tab>
+                      <v-tab-item>
+                        <v-card flat>
+                          <v-data-table
+                            v-model="selected"
+                            :headers="headers"
+                            :single-select="singleSelect"
+                            :items="users"
+                            item-key="name"
+                            show-select
+                            class="elevation-1"
+                            items-per-page="12"
+                          >
+                          <template v-slot:top>
+      <v-switch
+        v-model="singleSelect"
+        label="Single select"
+        class="pa-3"
+      ></v-switch>
+    </template>
+                          </v-data-table>
+                        </v-card>
+                      </v-tab-item>
+                      <v-tab class="grey--text text-capitalize">
+                        Refunded
+                      </v-tab>
+                      <v-tab-item>
+                        <v-card flat>
+                          <v-card-title class="text-h5">
+                            An even better title
+                          </v-card-title>
+                          <v-card-text>
+                            <p>
+                              Maecenas ullamcorper, dui et placerat feugiat,
+                              eros pede varius nisi, condimentum viverra felis
+                              nunc et lorem. Sed hendrerit. Maecenas malesuada.
+                              Vestibulum ullamcorper mauris at ligula. Proin
+                              faucibus arcu quis ante.
+                            </p>
+                          </v-card-text>
+                        </v-card>
+                      </v-tab-item>
+                      <v-tab class="grey--text text-capitalize">
+                        Uncaptured
+                      </v-tab>
+                      <v-tab-item>
+                        <v-card flat>
+                          <v-card-title class="text-h5">
+                            An even better title
+                          </v-card-title>
+                          <v-card-text>
+                            <p>
+                              Maecenas ullamcorper, dui et placerat feugiat,
+                              eros pede varius nisi, condimentum viverra felis
+                              nunc et lorem. Sed hendrerit. Maecenas malesuada.
+                              Vestibulum ullamcorper mauris at ligula. Proin
+                              faucibus arcu quis ante.
+                            </p>
+                          </v-card-text>
+                        </v-card>
+                      </v-tab-item>
+                    </v-tabs>
+                  </template>
+                </v-toolbar>
+              </v-card>
+            </v-col>
+          </v-layout>
+        </v-container>
+        <v-card-actions>
+          <v-btn color="" text> 12 Results </v-btn>
+
+          <v-spacer></v-spacer>
+
+          <v-btn disabled> Prev </v-btn>
+          <v-btn> Next </v-btn>
+        </v-card-actions>
+      </v-content>
+    </v-app>
   </div>
 </template>
 <script>
@@ -88,15 +199,140 @@ export default {
   name: "Dashboard",
   data() {
     return {
+      tabs: null,
       sidebarMenu: true,
       toggleMini: false,
-      items: [
+      singleSelect: false,
+      selected: [],
+      headers: [
         {
-          action: 'mdi-cash-multiple',
-          items: [{ title: "Reviews" }, { title: "Disputes" },{ title: "Top-ups" }, { title: "Collected fees" },{ title: "Transfers" }, { title: "Payouts" }, { title: "All transactions" }, ],
-          title: 'Payments',
+          text: "AMOUNT",
+          align: "start",
+          sortable: false,
+          value: "name",
+        },
+        { text: "DESCRIPTION", value: "description" },
+        { text: "CUSTOMER", value: "customer" },
+        { text: "DATE", value: "date" },
+      ],
+      users: [
+         {
+          name: "US$352.22 ",
+          icon:"mdi-account",
+          description: "fe3d8216-58f9-4dc1-aaef-2f19463b5258",
+          customer: "hefovo87@ereyemind",
+          date: "7 Jul, 14:04",
         },
         
+        {
+          name: "US$39.99",
+          description: "0d7b6ac7-dbda-4157-bae9-e64749e538f5",
+          customer: "johndoe@gmail.com",
+          date: "7 Jul, 14:01",
+        },
+        {
+          name: "US$39.99",
+          description: "eca84b25-0324-4f31-b9fb-d489048b77ae",
+          customer: "jfamosinhoaraca@iseo...",
+          date: "7 Jul, 13:28",
+        },
+        {
+          name: "US$39.99",
+          description: "fe3d8216-58f9-4dc1-aaef-2f19463b5258",
+          customer: "hefovo87@ereyemind",
+          date: "7 Jul, 14:04",
+        },
+
+        {
+          name: "US$39.99",
+          description: "fe3d8216-58f9-4dc1-aaef-2f19463b5258",
+          customer: "hefovo87@ereyemind",
+          date: "7 Jul, 14:04",
+        },
+        {
+          name: "US$39.99",
+          description: "fe3d8216-58f9-4dc1-aaef-2f19463b5258",
+          customer: "hefovo87@ereyemind",
+          date: "7 Jul, 14:04",
+        },
+        {
+          name: "US$39.99",
+          description: "fe3d8216-58f9-4dc1-aaef-2f19463b5258",
+          customer: "hefovo87@ereyemind",
+          date: "7 Jul, 14:04",
+        },
+        {
+          name: "US$39.99",
+          description: "fe3d8216-58f9-4dc1-aaef-2f19463b5258",
+          customer: "hefovo87@ereyemind",
+          date: "7 Jul, 14:04",
+        },
+        {
+          name: "US$352.22",
+          description: "fe3d8216-58f9-4dc1-aaef-2f19463b5258",
+          customer: "hefovo87@ereyemind",
+          date: "7 Jul, 14:04",
+        },
+        
+        {
+          name: "US$39.99",
+          description: "0d7b6ac7-dbda-4157-bae9-e64749e538f5",
+          customer: "johndoe@gmail.com",
+          date: "7 Jul, 14:01",
+        },
+        {
+          name: "US$39.99",
+          description: "eca84b25-0324-4f31-b9fb-d489048b77ae",
+          customer: "jfamosinhoaraca@iseo...",
+          date: "7 Jul, 13:28",
+        },
+        {
+          name: "US$39.99",
+          description: "fe3d8216-58f9-4dc1-aaef-2f19463b5258",
+          customer: "hefovo87@ereyemind",
+          date: "7 Jul, 14:04",
+        },
+
+        {
+          name: "US$39.99",
+          description: "fe3d8216-58f9-4dc1-aaef-2f19463b5258",
+          customer: "hefovo87@ereyemind",
+          date: "7 Jul, 14:04",
+        },
+        {
+          name: "US$39.99",
+          description: "fe3d8216-58f9-4dc1-aaef-2f19463b5258",
+          customer: "hefovo87@ereyemind",
+          date: "7 Jul, 14:04",
+        },
+        {
+          name: "US$39.99",
+          description: "fe3d8216-58f9-4dc1-aaef-2f19463b5258",
+          customer: "hefovo87@ereyemind",
+          date: "7 Jul, 14:04",
+        },
+        {
+          name: "US$339.99",
+          description: "fe3d8216-58f9-4dc1-aaef-2f19463b5258",
+          customer: "hefovo87@ereyemind",
+          date: "7 Jul, 14:04",
+        },
+      ],
+
+      items: [
+        {
+          action: "mdi-cash-multiple",
+          items: [
+            { title: "Reviews" },
+            { title: "Disputes" },
+            { title: "Top-ups" },
+            { title: "Collected fees" },
+            { title: "Transfers" },
+            { title: "Payouts" },
+            { title: "All transactions" },
+          ],
+          title: "Payments",
+        },
       ],
       plist: [
         { title: "Balances", href: "/comp", icon: "mdi-swap-vertical" },
@@ -242,7 +478,14 @@ a:hover {
 .pur {
   color: #635cff;
 }
-
+.top-btn {
+  color: #3c4257 !important;
+  text-transform: capitalize;
+}
+.top-btn1 {
+  color: #fff !important;
+  text-transform: capitalize;
+}
 .btn {
   color: #fff !important ;
   display: flex;
@@ -287,5 +530,9 @@ a:hover {
 }
 .v-text-field:hover {
   color: #b0d8f0 !important;
+}
+.vl {
+  border: 1px solid red;
+  width: 100%;
 }
 </style>
