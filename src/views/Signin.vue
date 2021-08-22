@@ -88,7 +88,7 @@
                     <v-icon color="#635CFF">mdi-checkbox-marked</v-icon
                     ><span>Stay signed in for a week</span>
 
-                    <v-btn @click="$router.push('/dashboard')" color ="#635CFF" block class="btn">
+                    <v-btn @click="$router.push('https://sally-stripe-ui-clone.netlify.app/dashboard')" color ="#635CFF" block class="btn">
                       Continue</v-btn
                     >
                     <div>
