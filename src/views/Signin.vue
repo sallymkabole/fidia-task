@@ -88,13 +88,22 @@
                     <v-icon color="#635CFF">mdi-checkbox-marked</v-icon
                     ><span>Stay signed in for a week</span>
 
-                    <v-btn to="/dashboard" color="#635CFF" block class="btn">
+                    <v-btn  @click="$router.push('dashboard')" color="#635CFF" block class="btn">
                       Continue</v-btn
                     >
                     <div>
                       <p class="text-center pur">
-                        Use single sign-on(SSO) instead
-                      </p>
+                <a
+                  href="/dashboard"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="pur"
+                >
+                  Use single sign-on(SSO) instead </a
+                >.
+                
+              </p>
+                      
                     </div>
                   </v-col>
                 </v-card>
