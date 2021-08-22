@@ -88,7 +88,7 @@
                     <v-icon color="#635CFF">mdi-checkbox-marked</v-icon
                     ><span>Stay signed in for a week</span>
 
-                    <v-btn @click="goToDashboard()"color="#635CFF" block class="btn">
+                    <v-btn @click="$router.push('dashboard')" color ="#635CFF" block class="btn">
                       Continue</v-btn
                     >
                     <div>
@@ -109,11 +109,6 @@
 <script>
 export default {
   name: "Signin",
-   methods:{
-   goToDashboard(){
-   this.$router.push('/dashboard'); 
-      }
-  },
   data() {
     return {
       tabs: null,
